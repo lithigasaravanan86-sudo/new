@@ -1,0 +1,260 @@
+EduSphereAI – Student Login Information Website
+
+Frontend, Backend and Database Prompts
+
+1. Frontend Prompt
+
+Create a modern responsive Student Login Information Website called "EduSphereAI".
+
+Frontend requirements:
+- Use React.js with Vite.
+- Use HTML5, CSS3 and JavaScript.
+- Use Tailwind CSS for a modern responsive UI.
+- Create a professional education-themed design.
+- Make it responsive for desktop, tablet and mobile.
+
+Pages:
+1. Landing Page
+2. Student Registration
+3. Student Login
+4. Student Dashboard
+5. Student Profile
+6. Edit Profile
+7. Student Information
+8. Logout
+
+Registration fields:
+- Student Name
+- Register Number
+- Email
+- Mobile Number
+- Date of Birth
+- Gender
+- College Name
+- Department
+- Year
+- Section
+- CGPA
+- Address
+- Password
+- Confirm Password
+
+Login:
+- Email/Register Number
+- Password
+- Show/hide password
+- Forgot password
+- Login validation
+- Display proper error messages
+
+Dashboard:
+- Welcome message with student name
+- Student profile summary
+- Register number
+- Department
+- Year
+- CGPA
+- Email
+- Phone number
+- Profile completion percentage
+- Recent activities
+- Logout button
+
+Important:
+- Do not store passwords in frontend/localStorage.
+- Frontend must communicate with backend using REST APIs.
+- Use Axios or Fetch API.
+- Add loading states and error messages.
+- Protect dashboard routes so only authenticated students can access them.
+- Use JWT token received from backend for authentication.
+- Create reusable components.
+- Organize the project into components, pages, services, hooks and assets folders.
+- Provide complete runnable code and setup instructions.
+
+2. Backend Prompt
+
+Create the backend for a Student Login Information Website called "EduSphereAI".
+
+Technology:
+- Python
+- FastAPI
+- PostgreSQL
+- SQLAlchemy ORM
+- JWT authentication
+- Pydantic validation
+- bcrypt/passlib for password hashing
+
+Create REST APIs for:
+
+AUTHENTICATION
+1. POST /api/auth/register
+2. POST /api/auth/login
+3. POST /api/auth/forgot-password
+4. POST /api/auth/reset-password
+5. POST /api/auth/logout
+
+STUDENT
+6. GET /api/students/me
+7. PUT /api/students/me
+8. GET /api/students/{student_id}
+9. DELETE /api/students/{student_id}
+
+Registration should accept:
+- name
+- register_number
+- email
+- phone
+- date_of_birth
+- gender
+- college
+- department
+- year
+- section
+- cgpa
+- address
+- password
+
+Requirements:
+- Validate all input fields.
+- Register number and email must be unique.
+- Hash passwords before saving them.
+- Never store plain-text passwords.
+- Authenticate users using JWT.
+- Protect student APIs using authentication middleware/dependencies.
+- Return proper HTTP status codes.
+- Return useful JSON responses.
+- Handle duplicate registration.
+- Handle invalid login.
+- Handle expired/invalid JWT tokens.
+- Add CORS so the React frontend can communicate with the backend.
+- Use environment variables for database URL and JWT secret.
+- Create a clean project structure.
+
+Example structure:
+
+backend/
+├── app/
+│   ├── main.py
+│   ├── database.py
+│   ├── models/
+│   ├── schemas/
+│   ├── routers/
+│   ├── services/
+│   ├── auth/
+│   └── utils/
+├── .env
+├── requirements.txt
+└── README.md
+
+Also provide:
+- Complete backend code
+- requirements.txt
+- .env.example
+- Database connection setup
+- API documentation
+- Commands to run the backend
+- Sample API requests and responses.
+
+3. Database Prompt
+
+Design and implement a PostgreSQL database for a Student Login Information Website called "EduSphereAI".
+
+Database requirements:
+
+Create a students table with:
+- id – Primary Key
+- student_name
+- register_number – Unique
+- email – Unique
+- phone_number
+- date_of_birth
+- gender
+- college_name
+- department
+- year
+- section
+- cgpa
+- address
+- password_hash
+- profile_photo
+- created_at
+- updated_at
+- last_login
+
+Create additional tables if required:
+1. students
+2. password_reset_tokens
+3. login_history
+4. student_activity
+
+Relationships:
+- One student can have multiple login history records.
+- One student can have multiple activity records.
+- Password reset tokens should belong to a student.
+
+Security:
+- Never store plain-text passwords.
+- Store only password hashes.
+- Add unique constraints for email and register number.
+- Add indexes for email and register number.
+- Use foreign keys.
+- Use timestamps.
+- Use proper data types.
+- Add created_at and updated_at fields.
+
+Provide:
+1. Complete PostgreSQL CREATE TABLE SQL
+2. Primary keys
+3. Foreign keys
+4. Unique constraints
+5. Indexes
+6. Sample student records
+7. Sample queries for:
+   - Register student
+   - Find student by email
+   - Find student by register number
+   - Update student information
+   - Get student profile
+   - Record login history
+   - Delete student
+
+Make the database structure compatible with a FastAPI + SQLAlchemy backend.
+
+4. System Connection
+
+STUDENT
+   ↓
+React Frontend
+(Login / Registration)
+   ↓
+REST API
+   ↓
+FastAPI Backend
+(Authentication + JWT)
+   ↓
+SQLAlchemy ORM
+   ↓
+PostgreSQL Database
+   ↓
+Student Information
+
+5. Recommended Project Structure
+
+EduSphereAI/
+│
+├── frontend/
+│   ├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── services/
+│   └── App.jsx
+│
+├── backend/
+│   ├── app/
+│   ├── routers/
+│   ├── models/
+│   ├── schemas/
+│   └── main.py
+│
+└── database/
+    └── schema.sql
